@@ -9,11 +9,10 @@ Dalam project ini, Anda adalah seorang Software Developer dari suatu perusahaan.
 -	Ke pegawai siapa task ditujukan
 -	Deadline dari task
 -	Fitur Membaca Task (Read) Kita bisa melihat task-task yang sudah ditambahkan sebelumnya
--	Fitur Mengedit Task (Update)
-Kita bisa mengubah isi dari task yang kita buat.
--	Fitur Pencatat Apakah Task Sudah Selesai
-Kita bisa menandai apakah suatu task sudah selesai dilakukan atau belum.
-Tambahan
+-	Fitur Mengedit Task (Update) Kita bisa mengubah isi dari task yang kita buat.
+-	Fitur Pencatat Apakah Task Sudah Selesai Kita bisa menandai apakah suatu task sudah selesai dilakukan atau belum.
+
+## Tambahan
 -	Penyimpanan data bisa dilakukan di mana saja. Bisa di variabel tersendiri, file, maupun database. Tentu saja jika menyimpan di file maupun database akan mendapat nilai bonus.
 -	Tampilan dari website dibebaskan. Jika tampilan semakin menarik tentunya akan ada nilai bonus.
 
