@@ -1,18 +1,10 @@
 import React from 'react';
-import { Button } from 'antd';
+import TaskForm from './components/TaskForm';
+import "antd/dist/antd.css";
 
 const App = () => (
   <div className="App">
-          <div>
-        <p>React Vitejs Antd template0</p>
-        <p>
-          <Button type="primary">Primary</Button>
-        </p>
-        <br/>
-        <div style={{ padding: 5 }}>
-          User Info
-        </div>
-      </div>
+    <TaskForm />
   </div>
 );
 
