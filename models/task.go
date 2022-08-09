@@ -82,3 +82,18 @@ func UpdateTask(c *fiber.Ctx) error {
 	db.Save(&task)
 	return c.JSON(&task)
 }
+
+// Hapus Task
+func DeleteTask(c *fiber.Ctx) error {
+	id := c.Params("id")
+	db := database.DBConn
+	var task Task
+	err := db.Find(&task, id).Error
+
+	if err != nil {
+		return c.Status(404).JSON(fiber.Map{"status": "error", "message": "Data Tidak Ada!", "data": err})
+	}
+
+	db.Delete(&task)
+	return c.SendStatus(200)
+}

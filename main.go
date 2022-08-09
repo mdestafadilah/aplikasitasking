@@ -33,6 +33,7 @@ func setupRoutes(app *fiber.App) {
 	app.Post("/tasks", models.CreateTask)
 	app.Get("/tasks/:id", models.GetTaskById)
 	app.Put("/tasks/:id", models.UpdateTask)
+	app.Delete("/tasks/:id", models.DeleteTask)
 }
 
 func main() {
