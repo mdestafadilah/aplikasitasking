@@ -36,3 +36,16 @@ func CreateTask(c *fiber.Ctx) error {
 	}
 	return c.JSON(&task)
 }
+
+// Detail Task
+func GetTaskById(c *fiber.Ctx) error {
+	id := c.Params("id")
+	db := database.DBConn
+	var task Task
+	err := db.Find(&task, id).Error
+	if err != nil {
+		return c.Status(404).JSON(fiber.Map{"status": "error", "message": "Data Tidak Ada!", "data": err})
+	}
+
+	return c.JSON(&task)
+}

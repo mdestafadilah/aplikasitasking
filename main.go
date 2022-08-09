@@ -11,7 +11,7 @@ import (
 )
 
 func helloworld(c *fiber.Ctx) error {
-	return c.SendString("Hello Dunia")
+	return c.SendString("APLIKASI BACKEND TASK SEDERHANA")
 }
 
 // Initialisasi Database
@@ -27,9 +27,11 @@ func initDatabase() {
 	fmt.Println("Migrated DB")
 }
 
+// Route API Handler
 func setupRoutes(app *fiber.App) {
 	app.Get("/tasks", models.GetTask)
 	app.Post("/tasks", models.CreateTask)
+	app.Get("/task/:id", models.GetTaskById)
 }
 
 func main() {
