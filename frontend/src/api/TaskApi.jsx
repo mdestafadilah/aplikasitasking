@@ -15,10 +15,10 @@ export const createTask = (task) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      namapegawai: todo.namapegawai,
-      deadline: todo.deadline,
-      isitask: todo.isitask,
-      completed: todo.completed,
+      namapegawai: task.namapegawai,
+      deadline: task.deadline,
+      isitask: task.isitask,
+      completed: task.completed,
     }),
   }).then((res) => res.json());
 };
@@ -30,15 +30,15 @@ export const updateTask = (task) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      namapegawai: todo.namapegawai,
-      deadline: todo.deadline,
-      isitask: todo.isitask,
+      namapegawai: task.namapegawai,
+      deadline: task.deadline,
+      isitask: task.isitask,
       completed: task.completed,
     }),
   });
 };
 
-export const deleteTodo = (id) => {
+export const deleteTask = (id) => {
   return fetch(`${baseUrl}/${id}`, {
     method: "DELETE",
   }).then(res => res.json());
