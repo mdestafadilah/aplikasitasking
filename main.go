@@ -31,7 +31,7 @@ func initDatabase() {
 func setupRoutes(app *fiber.App) {
 	app.Get("/tasks", models.GetTask)
 	app.Post("/tasks", models.CreateTask)
-	app.Get("/task/:id", models.GetTaskById)
+	app.Get("/tasks/:id", models.GetTaskById)
 }
 
 func main() {
