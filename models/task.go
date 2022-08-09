@@ -49,3 +49,36 @@ func GetTaskById(c *fiber.Ctx) error {
 
 	return c.JSON(&task)
 }
+
+// Update Task
+func UpdateTask(c *fiber.Ctx) error {
+	type UpdatedTask struct {
+		NamaPegawai string `json:"namapegawai"`
+		DeadLine    string `json:"deadline"`
+		IsiTask     string `json:"isitask"`
+		Completed   bool   `json:"completed"`
+	}
+
+	id := c.Params("id")
+	db := database.DBConn
+	var task Task
+	err := db.Find(&task, id).Error
+
+	if err != nil {
+		return c.Status(404).JSON(fiber.Map{"status": "error", "message": "Data Tidak Ada!", "data": err})
+	}
+
+	var updatedTask UpdatedTask
+	err = c.BodyParser(&updatedTask)
+
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Cek Kembali Data Anda!", "data": err})
+	}
+
+	task.NamaPegawai = updatedTask.NamaPegawai
+	task.DeadLine = updatedTask.DeadLine
+	task.IsiTask = updatedTask.IsiTask
+	task.Completed = updatedTask.Completed
+	db.Save(&task)
+	return c.JSON(&task)
+}
