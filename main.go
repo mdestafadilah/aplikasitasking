@@ -17,7 +17,7 @@ func helloworld(c *fiber.Ctx) error {
 // Initialisasi Database
 func initDatabase() {
 	var err error
-	dsn := "host=localhost user=postgres password=toor dbname=aplikasitasking port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	dsn := "host=localhost user=postgres password=toor dbname=tasking port=5432 sslmode=disable TimeZone=Asia/Jakarta"
 	database.DBConn, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("Gagal Terkoneksi Ke Database!")
@@ -27,8 +27,14 @@ func initDatabase() {
 	fmt.Println("Migrated DB")
 }
 
+func setupRoutes(app *fiber.App) {
+	app.Get("/tasks", models.GetTask)
+}
+
 func main() {
 	app := fiber.New()
+	initDatabase()
 	app.Get("/", helloworld)
+	setupRoutes(app)
 	app.Listen(":8000")
 }
