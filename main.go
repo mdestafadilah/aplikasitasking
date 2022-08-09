@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/mdestafadilah/aplikasitasking/database"
 	"github.com/mdestafadilah/aplikasitasking/models"
 	"gorm.io/driver/postgres"
@@ -38,6 +39,7 @@ func setupRoutes(app *fiber.App) {
 
 func main() {
 	app := fiber.New()
+	app.Use(cors.New())
 	initDatabase()
 	app.Get("/", helloworld)
 	setupRoutes(app)
