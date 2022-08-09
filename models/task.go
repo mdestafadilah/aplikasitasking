@@ -14,7 +14,7 @@ type Task struct {
 	Completed   bool   `json:"completed"`
 }
 
-// Buat Koneksi
+// Ambil Semua Task
 func GetTask(c *fiber.Ctx) error {
 	db := database.DBConn
 	var tasks []Task
