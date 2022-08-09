@@ -2,6 +2,8 @@ import React from 'react'
 import { Form, Col, Button, Input, DatePicker } from 'antd'
 import { PlusCircleFilled } from '@ant-design/icons'
 
+const { TextArea } = Input;
+
 const TaskForm = ({onFormSubmit}) => {
   const [form] = Form.useForm();
   const onFinish = () => {
@@ -40,7 +42,7 @@ const TaskForm = ({onFormSubmit}) => {
                 name={"isitask"}
                 rules={[{ required: true, message: 'Isi Task Wajib Isi'}]}
             >
-              <Input placeholder="Isi Task" />
+              <TextArea placeholder="Keterangan Task!" showCount maxLength={100} />
             </Form.Item>
 
       <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
