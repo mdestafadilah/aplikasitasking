@@ -1,17 +1,34 @@
 package main
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
+	"github.com/mdestafadilah/aplikasitasking/database"
+	"github.com/mdestafadilah/aplikasitasking/models"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 )
 
 func helloworld(c *fiber.Ctx) error {
 	return c.SendString("Hello Dunia")
 }
 
+// Initialisasi Database
+func initDatabase() {
+	var err error
+	dsn := "host=localhost user=postgres password=toor dbname=aplikasitasking port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	database.DBConn, err = gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	if err != nil {
+		panic("Gagal Terkoneksi Ke Database!")
+	}
+	fmt.Println("Database Terkoneksi!")
+	database.DBConn.AutoMigrate(&models.Task{})
+	fmt.Println("Migrated DB")
+}
+
 func main() {
 	app := fiber.New()
-
 	app.Get("/", helloworld)
-
 	app.Listen(":8000")
 }
