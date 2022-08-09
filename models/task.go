@@ -21,3 +21,18 @@ func GetTask(c *fiber.Ctx) error {
 	db.Find(&tasks)
 	return c.JSON(&tasks)
 }
+
+// Buat Task
+func CreateTask(c *fiber.Ctx) error {
+	db := database.DBConn
+	task := new(Task)
+	err := c.BodyParser(task)
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Check Datamu", "data": err})
+	}
+	err = db.Create(&task).Error
+	if err != nil {
+		return c.Status(500).JSON(fiber.Map{"status": "error", "message": "Gagal Insert Data", "data": err})
+	}
+	return c.JSON(&task)
+}
