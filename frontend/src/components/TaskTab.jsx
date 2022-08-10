@@ -1,18 +1,18 @@
 import React from 'react'
 import { List } from 'antd'
-import TodoItem from './TodoItem'
+import TaskItem from './TaskItem'
 
-const TaskTab = ({ todos, onTodoRemoval, onTodoToggle }) => {
+const TaskTab = ({ tasks, onTaskRemoval, onTaskToggle }) => {
   return (
     <>
       <List 
         locale={{ emptyText: "There's nothing to do"}}
-        dataSource={todos}
-        renderItem={(todo) => (
-          <TodoItem 
-            todo={todo}
-            onTodoToggle={onTodoToggle}
-            onTodoRemoval={onTodoRemoval}
+        dataSource={tasks}
+        renderItem={(task) => (
+          <TaskItem 
+            task={task}
+            onTaskToggle={onTaskToggle}
+            onTaskRemoval={onTaskRemoval}
           />
         )}
         pagination={{

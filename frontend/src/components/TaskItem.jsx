@@ -32,7 +32,7 @@ const TaskItem = ({ task, onTaskRemoval, onTaskToggle }) => {
     >
       <div className='task-item'>
         <Tag color={task.completed ? 'cyan' : 'red'} className="task-tag">
-          {task.title}
+          {task.isitask}
         </Tag>
       </div> 
     </List.Item>

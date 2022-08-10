@@ -21,7 +21,7 @@ const TaskForm = ({ onFormSubmit }) => {
 			form={form}
 			onFinish={onFinish}
 			layout="horizontal"
-			className="todo-form"
+			className="task-form"
 		>
 			<Form.Item
 				name={"namapegawai"}

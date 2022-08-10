@@ -1,9 +1,8 @@
 import React from "react";
-import { Row, Col, Layout, Tabs } from "antd";
+import { Row, Col, Layout } from "antd";
 import "antd/dist/antd.css";
-import TaskForm from "./components/TaskForm";
+import TaskList from "./components/TaskList";
 
-const { TabPane } = Tabs;
 const { Content } = Layout;
 
 const App = () => (
@@ -14,18 +13,7 @@ const App = () => (
 					<h1>Aplikasi Tasking Golang &amp; ReactJS</h1>
 				</Col>
 			</Row>
-			<TaskForm />
-			<Tabs defaultActiveKey="all">
-				<TabPane tab="All" key="all">
-				konten semua task
-				</TabPane>
-				<TabPane tab="Active" key="active">
-        konten task aktif
-				</TabPane>
-				<TabPane tab="Complete" key="complete">
-        konten task selesai
-				</TabPane>
-			</Tabs>
+			<TaskList />
 		</Content>
 	</Layout>
 );
